@@ -1,5 +1,6 @@
 import React from "react";
 import Filter from './Filter';
+import Tickets from "./Tickets";
 
 class Main extends React.Component {
   constructor(props){
@@ -9,6 +10,7 @@ class Main extends React.Component {
     return(
       <main className="main">
           <Filter/>
+          <Tickets/>
       </main>);
   }
 }

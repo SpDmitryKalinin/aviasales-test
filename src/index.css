@@ -6,12 +6,9 @@ html{
   font-size: 16px;
   --main-bg-color: #F3F7FA;
   --filter-hover: #F1FCFF;
+  --blue: #2196F3;
   font-family: 'Open Sans', sans-serif;
 }
-
-
-
-
 
 body {
   margin: 0;
@@ -28,6 +25,7 @@ code {
   background-color: var(--main-bg-color);
   margin-left: auto;
   margin-right: auto;
+  padding-bottom: 5rem;
 }
 
 .header{
@@ -44,6 +42,7 @@ code {
 
 .main{
   display: flex;
+  padding: 0 6.25rem 0 6.25rem;
 }
 
 .filter{
@@ -52,11 +51,14 @@ code {
   padding-bottom: 0.625rem;
   background-color: white;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  align-self: flex-start;
 }
 
 .filter__title{
   font-size: 0.75rem;
+  line-height: 0.75rem;
   margin: 0 0 0.625rem 1.25rem ;
+  letter-spacing: 0.5px;
 }
 
 .filter__boxes{
@@ -70,6 +72,7 @@ code {
 .filter__box{
   padding: 0.625rem 1.25rem;
   cursor: pointer;
+  height: 1.25rem;
 }
 
 .filter__box:hover{
@@ -84,11 +87,122 @@ code {
 
 .filter__checkbox-sign{
   margin-left: 0.625rem;
+  line-height: 1.25rem;
 }
 
-
-p{
-  color: red;
+.filter__checkbox-text{
+  margin: 0;
 }
 
+.tickets{
+  width: 100%;
+  margin-left: 2.2rem;
+}
+.tickets__tabs{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
 
+.tickets__tabs .tickets__tab:nth-child(1){
+  border-radius: 0.5rem 0 0 0.5rem;
+} 
+.tickets__tabs .tickets__tab:nth-child(3){
+  border-radius: 0 0.5rem 0.5rem 0;
+} 
+
+.tickets__tab{
+  display: flex;
+  width: 100%;
+  flex-grow: 1;
+  height: 3.125rem;
+  border: 0;
+  border-radius: 0;
+  background-color: white;
+  border: 1px solid #DFE5EC;
+}
+
+.ticket__title{
+  margin: auto;
+}
+
+.tickets__tab:hover, .tickets__tab:hover .ticket__title{
+  background-color: var(--blue);
+  border: 1px solid var(--blue);
+  color: white;
+}
+
+.tickets__button-more{
+  width: 100%;
+  border: none;
+  padding: 0.93rem;
+  background-color: var(--blue);
+  color: white;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border-radius: 0.31rem;
+}
+
+.ticket__title{
+  align-items: center;
+  text-align: center;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  color: #4A4A4A;
+}
+
+.ticket{
+  padding: 1.25rem;
+  background-color: white;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 0.3rem;
+  margin-bottom: 1.25rem;
+}
+
+.ticket__hat{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.ticket__price{
+  font-size: 1.5rem;
+  color: var(--blue);
+  font-weight: 600;
+  margin: 0;
+}
+
+.ticket__logo{
+  width: 6.875rem;
+  height: 2.25rem;
+}
+
+.ticket__info{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.625rem 0;
+}
+
+.ticket__info-title{
+  color: #A0B0B9;
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+  margin: 0;
+}
+
+.ticket__info-content{
+  color: #4A4A4A;
+  font-size: 0.875rem;
+  line-height: 1.31rem;
+  margin: 0;
+}
+
+.tickets__radio{
+  display: none;
+}
