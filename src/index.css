@@ -144,6 +144,7 @@ code {
   letter-spacing: 0.5px;
   text-transform: uppercase;
   border-radius: 0.31rem;
+  cursor: pointer;
 }
 
 .ticket__title{
