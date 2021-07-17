@@ -7,7 +7,8 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      dataTickets: []
+      dataTickets: [],
+      done: false
     }
   }
 
@@ -19,7 +20,7 @@ class App extends React.Component {
     return(
       <div className="page">
         <Header/>
-        <Main id={this.state.searchId}/>
+        <Main dataTickets = {this.state.dataTickets}/>
       </div>);
   }
 
@@ -39,7 +40,7 @@ class App extends React.Component {
       let fullTickets = collectTickets.concat(res.tickets);
       this.setState({dataTickets: fullTickets});
       if(res.stop){
-        this.show();
+        this.setState({done: true});
         return
       }
       this.collectData(id);
