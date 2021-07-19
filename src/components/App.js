@@ -20,7 +20,7 @@ class App extends React.Component {
     return(
       <div className="page">
         <Header/>
-        <Main dataTickets = {this.state.dataTickets}/>
+        <Main dataTickets = {this.state.dataTickets} dataTicketsLength ={this.state.dataTickets.length}/>
       </div>);
   }
 

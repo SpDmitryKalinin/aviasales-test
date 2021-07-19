@@ -8,7 +8,7 @@ class Main extends React.Component {
     this.state = {
       currentTickets: [],
       filter: {
-        all: true,
+        all: false,
         withoutTransfer: false,
         oneTransfer: false,
         twoTransfer: false,
@@ -21,38 +21,13 @@ class Main extends React.Component {
     }
   }
 
-  onChange(name, value){
+  //Функцию слушателя чекбоксов
+  onChange(name, value, param){
     this.setState({filter:{[name]: value}});
+    this.collectCurrentTickets(value, Number(param));
   }
 
-  componentDidUpdate(){
-    console.log(this.state.prevFilter)
-    if(this.state.filter.withoutTransfer){
-      this.collectCurrentTickets(true, 0);
-    }
-    if(this.state.filter.oneTransfer){
-      this.collectCurrentTickets(true, 1);
-    }
-    if(this.state.filter.twoTransfer){
-      this.collectCurrentTickets(true, 2);
-    }
-    if(this.state.filter.threeTransfer){
-      this.collectCurrentTickets(true, 3)
-    }
-    if(!this.state.filter.withoutTransfer){
-      this.collectCurrentTickets(false, 0);
-    }
-    if(!this.state.filter.oneTransfer){
-      this.collectCurrentTickets(false, 1);
-    }
-    if(!this.state.filter.twoTransfer){
-      this.collectCurrentTickets(false, 2);
-    }
-    if(!this.state.filter.threeTransfer){
-      this.collectCurrentTickets(false, 3)
-    }
-  }
-
+  //Функция фильтра для количества пересадок
   filterTickets(data, param){
     let result = data.filter(item =>{
       let tmp = 0;
@@ -66,29 +41,52 @@ class Main extends React.Component {
     return result;
   }
 
+  updateState(data){
+    this.setState({
+      currentTickets: data,
+      prevFilter: this.state.filter
+    });
+  }
+
   collectCurrentTickets(condition, param){
     if(JSON.stringify(this.state.prevFilter)===JSON.stringify(this.state.filter)){
       return
     }
+    if(condition === true && param === 9){
+      let all = Array.from(this.props.dataTickets);
+      all = all.concat(this.state.currentTickets);
+      this.updateState(all);
+      return
+    }
+
+    if(condition === false && param === 9){
+      let arr = this.state.currentTickets;
+      let len = this.props.dataTicketsLength;
+      let result = arr.filter(function(item, i){
+        if(i >= len){
+          return item
+        }
+      })
+      this.updateState(result);
+      return
+    }
+
     if(condition === true){
       let collectTickets = this.state.currentTickets.concat(this.filterTickets(this.props.dataTickets, param));
-      this.setState({
-        currentTickets: collectTickets,
-        prevFilter: this.state.filter
-      });
+      this.updateState(collectTickets);
     }
     if(condition === false){
-      console.log(this.filterTickets(this.state.currentTickets, param));
-      //Продолжить код фильтра исключения билетов из. Удаление элементов одного массива из другого
+      let deleteArray = this.filterTickets(this.state.currentTickets, param)
+      let result = this.state.currentTickets.filter(item => !deleteArray.includes(item));
+      this.updateState(result);
     }
   }
 
   render(){
-    console.log(this.state.currentTickets);
     return(
       <main className="main">
           <Filter onChange = {this.onChange.bind(this)}/>
-          <Tickets/>
+          <Tickets currentTickets = {this.state.currentTickets}/>
       </main>);
   }
 }
