@@ -1,0 +1,10 @@
+ .ticket__title{
+    align-items: center;
+    text-align: center;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    color: #4A4A4A;
+    margin: auto;
+}

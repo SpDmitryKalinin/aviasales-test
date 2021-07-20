@@ -1,0 +1,14 @@
+.tickets__button-more{
+    width: 100%;
+    border: none;
+    padding: 0.93rem;
+    background-color: var(--blue);
+    color: white;
+    font-weight: 600;
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border-radius: 0.31rem;
+    cursor: pointer;
+}

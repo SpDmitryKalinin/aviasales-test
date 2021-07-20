@@ -1,0 +1,10 @@
+.tickets__tab{
+    display: flex;
+    width: 100%;
+    flex-grow: 1;
+    height: 3.125rem;
+    border: 0;
+    border-radius: 0;
+    background-color: white;
+    border: 1px solid #DFE5EC;
+}

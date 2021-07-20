@@ -1,0 +1,12 @@
+.tickets__tabs{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+}
+  
+  .tickets__tabs .tickets__tab:nth-child(1){
+    border-radius: 0.5rem 0 0 0.5rem;
+} 
+  .tickets__tabs .tickets__tab:nth-child(3){
+    border-radius: 0 0.5rem 0.5rem 0;
+} 

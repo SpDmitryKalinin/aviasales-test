@@ -1,220 +1,64 @@
+/*normilize*/
+@import url(vendors/normalize.css);
+
+/*fonts*/
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
+/*html*/
+@import url(./blocks/html/html.css);
+
+/*Body*/
+
+@import url(./blocks/body/body.css);
+
+/*Main*/
+
+@import url(./blocks/main/main.css);
+
+/*Header*/
+
+@import url(./blocks/header/header.css);
+@import url(./blocks/header/__logo/header__logo.css);
+
+/*Page*/
+
+@import url(./blocks/page/page.css);
+
+/*Filter*/
+
+@import url(./blocks/filter/filter.css);
+@import url(./blocks/filter/__title/filter__title.css);
+@import url(./blocks/filter/__boxes/filter__boxes.css);
+@import url(./blocks/filter/__box/filter__box.css);
+@import url(./blocks/filter/__checkbox/filter__checkbox.css);
+@import url(./blocks/filter/__checkbox-sign/filter__checkbox-sign.css);
+@import url(./blocks/filter/__checkbox-text/filter__checkbox-text.css);
+
+/*Tickets*/
+
+@import url(./blocks/tickets/tickets.css);
+@import url(./blocks/tickets/__radio/tickets__radio.css);
+@import url(./blocks/tickets/__tabs/tickets__tabs.css);
+@import url(./blocks/tickets/__tab/tickets__tab.css);
+@import url(./blocks/tickets/__button-more/tickets__button-more.css);
+
+/*Ticket*/
+
+@import url(./blocks/ticket/ticket.css);
+@import url(./blocks/ticket/__title/ticket__title.css);
+@import url(./blocks/ticket/__hat/ticket__hat.css);
+@import url(./blocks/ticket/__price/ticket__price.css);
+@import url(./blocks/ticket/__logo/ticket__logo.css);
+@import url(./blocks/ticket/__info/ticket__info.css);
+@import url(./blocks/ticket/__info-title/ticket__info-title.css);
+@import url(./blocks/ticket/__info-content/ticket__info-content.css);
 
 /*CheckBoxs*/
 @import url('./blocks/checkbox.css');
-html{
-  font-size: 16px;
-  --main-bg-color: #F3F7FA;
-  --filter-hover: #F1FCFF;
-  --blue: #2196F3;
-  font-family: 'Open Sans', sans-serif;
-}
 
-body {
-  margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
-
-.page{
-  width: 60rem;
-  background-color: var(--main-bg-color);
-  margin-left: auto;
-  margin-right: auto;
-  padding-bottom: 5rem;
-}
-
-.header{
-  padding: 3.125rem 0 3.125rem 0;
-}
-
-.header__logo{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 3.75rem;
-  height: 3.75rem;
-}
-
-.main{
-  display: flex;
-  padding: 0 6.25rem 0 6.25rem;
-}
-
-.filter{
-  width: 14.5rem;
-  padding-top: 1.25rem;
-  padding-bottom: 0.625rem;
-  background-color: white;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  align-self: flex-start;
-}
-
-.filter__title{
-  font-size: 0.75rem;
-  line-height: 0.75rem;
-  margin: 0 0 0.625rem 1.25rem ;
-  letter-spacing: 0.5px;
-}
-
-.filter__boxes{
-  border: none;
-  outline: none;
-  width: 14.5rem;
-  padding: 0;
-  margin: 0;
-}
-
-.filter__box{
-  padding: 0.625rem 1.25rem;
-  cursor: pointer;
-  height: 1.25rem;
-}
-
-.filter__box:hover{
-  background-color: var(--filter-hover);
-}
-
-.filter__checkbox{
-  margin: 0;
-  position: absolute;
-  left: -9999px;
-}
-
-.filter__checkbox-sign{
-  margin-left: 0.625rem;
-  line-height: 1.25rem;
-}
-
-.filter__checkbox-text{
-  margin: 0;
-}
-
-.tickets{
-  width: 100%;
-  margin-left: 2.2rem;
-}
-
-.tickets__radio{
-  display: none;
-}
-
-.tickets__radio:checked + label{
-  background-color: var(--blue);
-  border: 1px solid var(--blue);
-  
-}
-
-.tickets__radio:checked + label .ticket__title{
-  background-color: var(--blue);
-  border: 1px solid var(--blue);
-  color: white;
-}
-
-.tickets__tabs{
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1.25rem;
-}
-
-.tickets__tabs .tickets__tab:nth-child(1){
-  border-radius: 0.5rem 0 0 0.5rem;
-} 
-.tickets__tabs .tickets__tab:nth-child(3){
-  border-radius: 0 0.5rem 0.5rem 0;
-} 
-
-.tickets__tab{
-  display: flex;
-  width: 100%;
-  flex-grow: 1;
-  height: 3.125rem;
-  border: 0;
-  border-radius: 0;
-  background-color: white;
-  border: 1px solid #DFE5EC;
-}
-
-.ticket__title{
-  margin: auto;
-}
-
-
-.tickets__button-more{
-  width: 100%;
-  border: none;
-  padding: 0.93rem;
-  background-color: var(--blue);
-  color: white;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 20px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  border-radius: 0.31rem;
-  cursor: pointer;
-}
-
-.ticket__title{
-  align-items: center;
-  text-align: center;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 0.75rem;
-  letter-spacing: 1px;
-  color: #4A4A4A;
-}
-
-.ticket{
-  padding: 1.25rem;
-  background-color: white;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 0.3rem;
-  margin-bottom: 1.25rem;
-}
-
-.ticket__hat{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.25rem;
-}
-
-.ticket__price{
-  font-size: 1.5rem;
-  color: var(--blue);
-  font-weight: 600;
-  margin: 0;
-}
-
-.ticket__logo{
-  width: 6.875rem;
-  height: 2.25rem;
-}
-
-.ticket__info{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 0.625rem 0;
-}
-
-.ticket__info-title{
-  color: #A0B0B9;
-  font-size: 0.75rem;
-  line-height: 1.125rem;
-  margin: 0;
-}
-
-.ticket__info-content{
-  color: #4A4A4A;
-  font-size: 0.875rem;
-  line-height: 1.31rem;
-  margin: 0;
-}
-
 
 

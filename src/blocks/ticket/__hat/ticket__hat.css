@@ -1,0 +1,6 @@
+.ticket__hat{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+}
