@@ -13,27 +13,20 @@ class App extends React.Component {
   }
 
   componentDidMount(){
-    this.datainit();
-  }
-
-  render(){
-    return(
-      <div className="page">
-        <Header/>
-        <Main dataTickets = {this.state.dataTickets} dataTicketsLength ={this.state.dataTickets.length}/>
-      </div>);
-  }
-
-  datainit(){
     this.initSearchId();
   }
 
+  //Получение searhId
   initSearchId(){
     api.getSearchId().then(res =>{
       this.collectData(res.searchId);
-    }); 
+    })
+    .catch(res =>{
+      console.log(`Ошибка: ${res}`)
+    }) 
   }
 
+  //Получение посылок билетов и формирование одного массива из всех посылок
   collectData(id){
     api.getTicketsData(id).then(res => {
       let collectTickets = this.state.dataTickets;
@@ -46,14 +39,28 @@ class App extends React.Component {
       this.collectData(id);
     })
     .catch(res =>{
-      console.log(res);
-      this.collectData(id);
+      //Обработка ошибок
+      if(res === 500){
+        console.log(`Ошибка: ${res}`)
+        this.collectData(id);
+      }
+      if(res === 404){
+        this.setState({dataTickets: []});
+        console.log(`Ошибка: ${res}`)
+        this.initSearchId();
+      }
     })
   }
 
-  show(){
-    console.log(this.state.dataTickets); //Продолжить код
+  render(){
+    return(
+      <div className="page">
+        <Header/>
+        <Main dataTickets = {this.state.dataTickets} dataTicketsLength ={this.state.dataTickets.length} loadingDone ={this.state.done}/>
+      </div>);
   }
+
+
 }
 
 export default App;

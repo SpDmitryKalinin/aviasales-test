@@ -7,7 +7,6 @@ class Filter extends React.Component {
 
     onChangeHandler = e =>{
         this.props.onChange(e.target.id, e.target.checked, e.target.value);
-
     }
 
     render(){
@@ -17,7 +16,7 @@ class Filter extends React.Component {
             <fieldset className="filter__boxes">
                 
                 <div className="filter__box">
-                    <input onChange={this.onChangeHandler} className="filter__checkbox" type="checkbox" id="all" name="filters" value='9'></input>
+                    <input onChange={this.onChangeHandler} className="filter__checkbox" type="checkbox" id="all" name="filters" value='9' defaultChecked></input>
                     <label className="filter__checkbox-sign" for="all"><p className="filter__checkbox-text">Все</p></label>
                 </div>
 

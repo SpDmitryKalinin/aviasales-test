@@ -98,6 +98,23 @@ code {
   width: 100%;
   margin-left: 2.2rem;
 }
+
+.tickets__radio{
+  display: none;
+}
+
+.tickets__radio:checked + label{
+  background-color: var(--blue);
+  border: 1px solid var(--blue);
+  
+}
+
+.tickets__radio:checked + label .ticket__title{
+  background-color: var(--blue);
+  border: 1px solid var(--blue);
+  color: white;
+}
+
 .tickets__tabs{
   display: flex;
   justify-content: space-between;
@@ -126,11 +143,6 @@ code {
   margin: auto;
 }
 
-.tickets__tab:hover, .tickets__tab:hover .ticket__title{
-  background-color: var(--blue);
-  border: 1px solid var(--blue);
-  color: white;
-}
 
 .tickets__button-more{
   width: 100%;
@@ -204,6 +216,5 @@ code {
   margin: 0;
 }
 
-.tickets__radio{
-  display: none;
-}
+
+

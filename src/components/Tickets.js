@@ -1,5 +1,6 @@
 import React from "react";
 import Ticket from "./Ticket";
+import {diffArrays} from "../utils/utils";
 
 
 class Tickets extends React.Component {
@@ -13,59 +14,55 @@ class Tickets extends React.Component {
     }
 
     componentDidUpdate(){
-        let arr = this.props.currentTickets.slice();
-        arr.length = this.state.quantTickets;
-        if(arr[0]!==undefined){
-            if(this.state.viewTickets.length === 0 || !this.diff(arr, this.state.prevViewTickets)){
+        let copyCurrentTickets = this.props.currentTickets.slice();
+        copyCurrentTickets.length = this.state.quantTickets;
+        //Проверка на заполненность стейта currentTickets
+        if(copyCurrentTickets[0]!==undefined){
+            if(this.state.viewTickets.length === 0 || !diffArrays(copyCurrentTickets, this.state.prevViewTickets)){
                 this.setState({
-                    viewTickets: arr,
+                    viewTickets: copyCurrentTickets,
                     prevViewTickets: this.state.viewTickets
                 })
             }
         }
     }
 
-    //Проверка на идентичность массивов
-
-    diff(arr1, arr2) {
-        if(arr1.length !== arr2.length){
-            return false
-        }
-        for(let i=0; i<arr1.length; i++){
-            if(arr1[i]!==arr2[i]){
-                return false
-            }
-        }
-        return true
+    //Функция обновления стейта для показа большего количества билетов
+    _moreViewTickets(){
+        this.setState({
+            quantTickets: this.state.quantTickets + 5
+        })
     }
 
     render(){
-      return(  
+      return(
         <section className="tickets">
             <div className="tickets__tabs">
+                <input onChange={(e) => this.props.onChange(e.target.id)} className="tickets__radio" type="radio" id="cheap" value="cheap" name="choice" defaultChecked ></input>
                 <label className="tickets__tab" for="cheap">
-                    <input className="tickets__radio" type="radio" id="cheap" value="cheap" name="choice"></input>
                     <h2 className="ticket__title">САМЫЙ ДЕШЕВЫЙ</h2>
                 </label>
 
+
+                <input onChange={(e) => this.props.onChange(e.target.id)} className="tickets__radio" type="radio" id="fast" value="fast" name="choice"></input>
                 <label className="tickets__tab" for="fast">
-                    <input className="tickets__radio" type="radio" id="fast" value="fast" name="choice"></input>
                     <h2 className="ticket__title">САМЫЙ БЫСТРЫЙ</h2>
                 </label>
 
+                <input onChange={(e) => this.props.onChange(e.target.id)} className="tickets__radio" type="radio" id="optimal" value="optimal" name="choice"></input>
                 <label className="tickets__tab" for="optimal">
-                    <input className="tickets__radio" type="radio" id="optimal" value="optimal" name="choice"></input>
                     <h2 className="ticket__title">ОПТИМАЛЬНЫЙ</h2>
                 </label>
             </div>
             <section className="tickets__container">
                 {
-                    this.state.viewTickets.map((item => {
-                        return <Ticket info ={item}/>
-                    }))
+                    //Заполнение контейнера массивом билетов для отображения
+                    this.state.viewTickets.map((item) => {
+                        return <Ticket info ={item} key={item.carrier + item.price}/>
+                    })
                 }
             </section>
-            <button className="tickets__button-more">Показать еще 5 билетов!</button>
+            <button className="tickets__button-more" onClick={this._moreViewTickets.bind(this)}>Показать еще 5 билетов!</button>
         </section>);
     }
   }
