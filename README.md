@@ -1,3 +1,3 @@
-# pmotion-test
+# aviasales-test
 
-Тестовое задание для студии pmotion
+Тестовое задание для компании aviasales
